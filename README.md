@@ -1,3 +1,10 @@
-# GaIMUnityTemplate
-Standard template for Unity projects with some basic features (Unity gitignore, GitLFS, etc.)
-To use this template, click the "Use this template" button at the top of the page to create a new repository on GitHub.  Then you can clone, pull, or otherwise use the repository as needed. If you are starting a new project, I'd suggest cloning this repository to your computer in your desired location, then creating your new Unity project in that folder.
+# README
+The biggest issue i've had throughout the project was Unity getting stuck infinitely while trying to "reload domain" after script modifications. I also had issues with sfx not playing; but it was due to not putting the audio source in the right place.
+
+Team 22: 
+Jakob Nelson, Elizabeth Reimann and Thomas Durbin
+- Recently sent a message to them and have heard from one of them so far, I will update this README here with any updates in regards to that until the due date
+
+
+https://medal.tv/games/requested/clips/1Dn40ioGKEag1n/d1337E1Mx2gU?invite=cr-MSxaSWgsNTE1MTEyNjUs
+
