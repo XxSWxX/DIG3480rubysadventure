@@ -6,5 +6,5 @@ Jakob Nelson, Elizabeth Reimann and Thomas Durbin
 - Recently sent a message to them and have heard from one of them so far, I will update this README here with any updates in regards to that until the due date
 
 
-https://medal.tv/games/requested/clips/1Dn40ioGKEag1n/d1337E1Mx2gU?invite=cr-MSxaSWgsNTE1MTEyNjUs
+
 
