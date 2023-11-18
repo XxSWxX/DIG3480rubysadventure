@@ -9,6 +9,7 @@ using UnityEngine;
     public int maxHealth = 5;
 
     public ParticleSystem hitEffect;
+    public ParticleSystem healEffect;
     public GameObject projectilePrefab;
     
     public int health { get { return currentHealth; }}
@@ -110,6 +111,12 @@ using UnityEngine;
             ParticleSystem hitParticle = Instantiate(hitEffect, rigidbody2d.position, Quaternion.identity);
             isInvincible = true;
             invincibleTimer = timeInvincible;
+    
+
+        }
+        else
+        {
+            ParticleSystem healParticle = Instantiate(healEffect, rigidbody2d.position+new Vector2(0,1), healEffect.transform.rotation);
         }
         
         currentHealth = Mathf.Clamp(currentHealth + amount, 0, maxHealth);

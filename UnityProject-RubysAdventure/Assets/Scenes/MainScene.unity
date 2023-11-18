@@ -34730,6 +34730,10 @@ PrefabInstance:
       propertyPath: throwClip
       value: 
       objectReference: {fileID: 8300000, guid: b2edfd40873655249ba0e01a5cf705be, type: 3}
+    - target: {fileID: 6675609263492948194, guid: be4a3bf6f7e03654a93a0a1ed3e45592, type: 3}
+      propertyPath: healEffect
+      value: 
+      objectReference: {fileID: 793219667822084041, guid: a56506076e6c2c34c9003d7e3e2c5500, type: 3}
     - target: {fileID: 8893869292726152240, guid: be4a3bf6f7e03654a93a0a1ed3e45592, type: 3}
       propertyPath: m_Name
       value: Ruby
