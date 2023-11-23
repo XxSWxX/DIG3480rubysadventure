@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 200663284709903496}
   - component: {fileID: 9194383461515868136}
   - component: {fileID: 8367262078211987167}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Robot
   m_TagString: Robot
   m_Icon: {fileID: 0}
@@ -353,6 +353,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SparkEffect
       objectReference: {fileID: 0}
+    - target: {fileID: 6748870914649793284, guid: 42d23f8055a21194490c54b4a28a83b4, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -423,6 +427,10 @@ PrefabInstance:
     - target: {fileID: 8052174507211418083, guid: d767a24ef4eb6424e89fabea68a8930a, type: 3}
       propertyPath: m_Name
       value: SmokeEffect
+      objectReference: {fileID: 0}
+    - target: {fileID: 8052174507211418083, guid: d767a24ef4eb6424e89fabea68a8930a, type: 3}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

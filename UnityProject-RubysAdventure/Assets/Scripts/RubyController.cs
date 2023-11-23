@@ -1,24 +1,26 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 
 ﻿public class RubyController : MonoBehaviour
 {
-    public float speed = 3.0f;
-    
+    public float speed = 3.0f;   
     public int maxHealth = 5;
-
-    public ParticleSystem hitEffect;
-    public ParticleSystem healEffect;
-    public GameObject projectilePrefab;
-    
-    public int health { get { return currentHealth; }}
-    public int currentHealth;
-    
     public float timeInvincible = 2.0f;
     bool isInvincible;
     float invincibleTimer;
-    
+    public int health { get { return currentHealth; }}
+    public int currentHealth;
+    static public bool gameOver = false;
+
+    public ParticleSystem hitEffect;
+    public ParticleSystem healEffect;
+    public AudioClip hitClip;
+    public AudioClip throwClip;
+    public GameObject projectilePrefab;
+    public GameObject gameOverScreen;
+
     Rigidbody2D rigidbody2d;
     float horizontal;
     float vertical;
@@ -26,8 +28,7 @@ using UnityEngine;
     Animator animator;
     Vector2 lookDirection = new Vector2(1,0);
     
-    public AudioClip hitClip;
-    public AudioClip throwClip;
+
 
     AudioSource audioSource;
 
@@ -88,6 +89,14 @@ using UnityEngine;
             }
         }
 
+        if (Input.GetKey(KeyCode.R))
+        {
+            if (gameOver == true)
+            {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex); // this loads the currently active scene
+            gameOver = false;
+            }
+        }
     }
     
     void FixedUpdate()
@@ -119,8 +128,17 @@ using UnityEngine;
             ParticleSystem healParticle = Instantiate(healEffect, rigidbody2d.position+new Vector2(0,1), healEffect.transform.rotation);
         }
         
+
         currentHealth = Mathf.Clamp(currentHealth + amount, 0, maxHealth);
         UIHealthBar.instance.SetValue(currentHealth / (float)maxHealth);
+
+        if (currentHealth == 0)
+        {
+            speed = 0.0f;
+            gameOver = true;
+            gameOverScreen.SetActive(true);
+        }
+
     }
     
     void Launch()

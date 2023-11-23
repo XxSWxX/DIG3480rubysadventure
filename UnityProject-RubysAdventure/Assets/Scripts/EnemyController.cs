@@ -95,7 +95,7 @@ public class EnemyController : MonoBehaviour
     {
         broken = false;
 
-        //Debug.Log(UIScore.instance.GetValue);
+        //increse counter
         UIScore.instance.SetValue(1);
 
         audioSource.Stop();
