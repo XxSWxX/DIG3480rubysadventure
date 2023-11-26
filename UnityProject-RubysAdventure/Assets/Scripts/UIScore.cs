@@ -12,6 +12,7 @@ public class UIScore : MonoBehaviour
     public GameObject virtualCam;
     public GameObject gameWinScreen;
 
+
     public int currentStage;
     public int fixCount = 0;
     private int maxRobots;
@@ -22,10 +23,9 @@ public class UIScore : MonoBehaviour
 
     public List<GameObject> stages;
 
-    //private GameObject BoundryEmptyObject;
-    //public PolygonCollider2D BoundryShape;
+    public AudioClip winMusic;
+    AudioSource audioSource;
     CinemachineConfiner2D confiner2D;
-    //Rigidbody rbt;
 
     void Awake()
     {
@@ -44,7 +44,7 @@ public class UIScore : MonoBehaviour
         confiner2D.m_BoundingShape2D = stages[currentStage].transform.Find("CameraConfiner").GetComponent<PolygonCollider2D>();
 
 
-
+        audioSource= GetComponent<AudioSource>();
 
         maxRobots = player.transform.parent.transform.Find("Robots").transform.childCount;
 
@@ -52,6 +52,10 @@ public class UIScore : MonoBehaviour
         counterText.text=(0+"/"+maxRobots);
     }
 
+    public void PlaySound(AudioClip clip)
+    {
+        audioSource.PlayOneShot(clip);
+    }
 
     public void SetValue(int value)
     {
@@ -90,6 +94,7 @@ public class UIScore : MonoBehaviour
             }
             else
             {
+               PlaySound(winMusic);
                gameWinScreen.SetActive(true);
                RubyController.gameOver = true; 
             }
