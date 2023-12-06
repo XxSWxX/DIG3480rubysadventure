@@ -177,12 +177,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 2
   vertical: 0
+  flying: 0
   changeTime: 2
+  shootTime: 2
   smokeEffect: {fileID: 4567837961208346340}
   sparkEffect: {fileID: 4850888693364619361}
   brokenClip: {fileID: 8300000, guid: 6bfbad8ffdf387d4e87e8fa07b62f7c1, type: 3}
+  flightClip: {fileID: 0}
+  shootClip: {fileID: 0}
   hitClip1: {fileID: 8300000, guid: ae904c7305df7344d86b2092c0cb3a26, type: 3}
   hitClip2: {fileID: 8300000, guid: 709a835b61b848644946696fdd5e5a4d, type: 3}
+  projectilePrefab: {fileID: 5544791825330361073, guid: c9ce6cde27171e64cb2263acac42dcd2, type: 3}
   direction: -1
 --- !u!95 &9194383461515868136
 Animator:

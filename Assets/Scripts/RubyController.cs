@@ -2,10 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 using UnityEngine;
-
+//MAIN SCRIPT
 ﻿public class RubyController : MonoBehaviour
 {
-    public float speed = 3.0f;   
+    public float speed = 3.0f;  
+    float timeBoosted = 5;
+    float boostTimer;
+    public float speedBoost = 7;
+    public bool boosting = false;
+
     public int maxHealth = 5;
     public float timeInvincible = 2.0f;
     bool isInvincible;
@@ -71,6 +76,33 @@ using UnityEngine;
                 isInvincible = false;
         }
         
+        if (boosting)
+        boostTimer += Time.deltaTime;
+        Debug.Log(timeBoosted);
+        {
+            if (boostTimer >timeBoosted)
+            {
+                speed = 3;
+                boostTimer = timeBoosted;
+                boosting = false;
+            
+            }
+        }
+
+        void OnTriggerEnter2D(Collider2D other)
+        {
+            if (other.tag == "SpeedPotion")
+        {
+
+           boosting = true;
+           speed = 7;
+
+           Destroy(other.gameObject);
+
+        }
+
+        }
+
         if(Input.GetKeyDown(KeyCode.C))
         {
             Launch();

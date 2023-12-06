@@ -4,11 +4,17 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
+    
+    public bool enemy;
+    float bulletLifetime = 1.5f;
+    float bulletLifetimer;
+
     Rigidbody2D rigidbody2d;
     
     void Awake()
     {
         rigidbody2d = GetComponent<Rigidbody2D>();
+        bulletLifetimer = bulletLifetime;
     }
     
     public void Launch(Vector2 direction, float force)
@@ -22,15 +28,37 @@ public class Projectile : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        bulletLifetimer -= Time.deltaTime;
+
+        if (bulletLifetimer < 0)
+        {
+            bulletLifetimer = bulletLifetime;
+            Destroy(gameObject);
+        }
     }
     
     void OnCollisionEnter2D(Collision2D other)
     {
-        EnemyController e = other.collider.GetComponent<EnemyController>();
-        if (e != null)
+        if (enemy != true)
         {
-            e.Fix();
+            EnemyController e = other.collider.GetComponent<EnemyController>();
+            if (e != null)
+            {
+                e.Fix();
+            }
+            Destroy(gameObject);
         }
-        Destroy(gameObject);
+        else
+        {
+            RubyController r = other.collider.GetComponent<RubyController>();
+            if (r != null)
+            {
+                r.ChangeHealth(-1);
+                
+            }
+            Destroy(gameObject);
+        }
+
     }
 }

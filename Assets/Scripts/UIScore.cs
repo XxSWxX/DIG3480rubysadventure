@@ -11,6 +11,8 @@ public class UIScore : MonoBehaviour
     public GameObject player;
     public GameObject virtualCam;
     public GameObject gameWinScreen;
+    public GameObject gameStartScreen;
+    public GameObject gameUI;
 
 
     public int currentStage;
@@ -35,21 +37,33 @@ public class UIScore : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //set Ruby to the stage defined by currentStage
-        player.transform.SetParent(stages[currentStage].transform,true);
-        player.transform.position=stages[currentStage].transform.Find("StartPoint").transform.position;
+            gameUI.transform.localScale  = new Vector3(0,0,0); //hides gameplay ui at start
+            audioSource= GetComponent<AudioSource>();
+            counterText = GetComponent<TextMeshProUGUI>();
+    }
 
-        //set camera confiner to current stage
-        confiner2D = virtualCam.GetComponent<CinemachineConfiner2D>();
-        confiner2D.m_BoundingShape2D = stages[currentStage].transform.Find("CameraConfiner").GetComponent<PolygonCollider2D>();
+    // Detects if the Enter key was pressed
+    void OnGUI()
+    {
+        if (Event.current.Equals(Event.KeyboardEvent("[enter]")) || Event.current.Equals(Event.KeyboardEvent("return")))
+        {
+            gameUI.transform.localScale  = new Vector3(1,1,1); //unhides gameplay ui
+            gameStartScreen.SetActive(false);
+
+            //set Ruby to the stage defined by currentStage
+            player.transform.SetParent(stages[currentStage].transform,true);
+            player.transform.position=stages[currentStage].transform.Find("StartPoint").transform.position;
+
+            //set camera confiner to current stage
+            confiner2D = virtualCam.GetComponent<CinemachineConfiner2D>();
+            confiner2D.m_BoundingShape2D = stages[currentStage].transform.Find("CameraConfiner").GetComponent<PolygonCollider2D>();
+
+            maxRobots = player.transform.parent.transform.Find("Robots").transform.childCount;
+
+            counterText.text=(0+"/"+maxRobots);
+        }
 
 
-        audioSource= GetComponent<AudioSource>();
-
-        maxRobots = player.transform.parent.transform.Find("Robots").transform.childCount;
-
-        counterText = GetComponent<TextMeshProUGUI>();
-        counterText.text=(0+"/"+maxRobots);
     }
 
     public void PlaySound(AudioClip clip)
